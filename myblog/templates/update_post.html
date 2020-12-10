@@ -1,0 +1,31 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Update Your  Blog
+{% endblock %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+{% if user.id == post.author.id%}
+<a href="{% url 'home'%}">Back</a>
+
+<h3>Update Blog Post</h3>
+<div class="form-group">
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form.media}}
+    {{form.as_p}}
+    <button class="btn btn-secondary"> Post</button>
+</form>
+
+{% else %}
+    Error You are Not Allowed Here
+    <h1>404 ERROR</h1>
+{% endif %}
+{% endif %}
+
+</div>
+
+
+    {% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'base.html'%}
+
+{% block title %}
+Author Detials
+{% endblock %}
+
+{% block content %}
+
+<h3>Add Profile Details...</h3>
+<div class="form-group">
+<form method="POST">
+    {% csrf_token %}
+    {{form.as_p}}
+    <button class="btn btn-secondary">Add Profile</button>
+</form>
+</div>
+
+<script>
+    var name = "{{user.id}}";
+    document.getElementById("profileuser").value=name;
+</script>
+
+
+
+
+    {% endblock %}

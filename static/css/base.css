@@ -1,0 +1,30 @@
+.navbar-brand{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color:rgb(197, 99, 20);
+    
+    font-size:x-large;
+    font-weight: 600;
+}
+
+.navbar-brand:hover{
+    color:rgb(82, 64, 51);
+    
+}
+
+.navbar{
+    background-color:rgb(240, 222, 200);
+    border-bottom: 2px solid rgb(197, 99, 20);
+    font-size:x-large;
+    height: 4.5rem;
+}
+
+.nav-link{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color:rgb(197, 99, 20);
+    font-weight: 600;
+}
+
+.nav-link:hover{
+    color:rgb(82, 64, 51);
+    
+}

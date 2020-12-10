@@ -1,0 +1,31 @@
+.login-form{
+    border: 2px solid rgb(197, 99, 20);
+    background-color: rgb(240, 222, 200);
+    padding: 6em;
+    margin: 10em;
+    margin-left: 17em;
+    width: 50%;
+    border-radius: 10px;
+}
+
+.login-form h3{
+    text-align: center;
+    font-size:3em;
+    font-weight: 900;
+    padding-bottom: 20px;
+    margin-top: -50px;
+}
+
+.login-form  input{
+    padding: 30px;
+    
+}
+
+.login-form .login-btn{
+    margin-left: 6.5em;
+    width: 5em;
+}
+
+body{
+    background: linear-gradient(to right, #ddc8aa, #7e6c55);
+}

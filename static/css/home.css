@@ -1,0 +1,25 @@
+.heading{
+    text-align: center;
+    color: rgb(82, 64, 51);
+    font-weight: 600;
+}
+
+.side-row{
+    width: 27.5rem;
+    border: 2px solid rgb(197, 99, 20);
+    background-color: rgb(240, 222, 200);
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.enquiery-form{
+    padding: 3.9em;
+    margin-top: 5em;
+    margin-left: 1.5em;
+    border: 1px solid rgb(179, 156, 126);
+} 
+
+.goggle-ad{
+margin-top: 5em;
+margin-left: 1.5em;
+}

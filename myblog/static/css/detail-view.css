@@ -1,0 +1,12 @@
+.detail-body{
+    font-style: italic;
+    font-size: larger;
+}
+
+.detail-title{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-style: italic;
+    font-size:3em;
+    font-weight: 700;
+    margin-bottom: 1em;
+}

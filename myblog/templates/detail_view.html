@@ -1,0 +1,45 @@
+{% extends 'base.html'%}
+{% load static  %}
+{% block title %}
+My blog-{{post.title}}
+{% endblock %}
+
+{% block extra_head %}
+<link href='https://fonts.googleapis.com/css?family=Simonetta' rel='stylesheet'>
+<link rel="stylesheet" href="{% static 'css/detail-view.css'%}">
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+<h1 class="detail-title">{{post.title}}</h1>
+
+{% if post.post_images %}
+<img src="{{post.post_images.url}}" style="width: 30rem;" alt="this is image" >
+{% endif %}
+
+<br/><br/>
+<span class="detail-body">{{post.body|safe}}</span>
+<br/>
+
+{% if user.is_authenticated %}
+    {% if user.id == post.author.id %}
+<a href="{% url 'update-view' post.pk %}">Edit</a>
+    {% endif %}
+{% endif %}
+<br/><br/>
+<hr>
+<form action="{% url 'like_post' post.pk%}" method="POST" > 
+    {% csrf_token %}
+    {% if liked %}
+        <button type="submit" name="post_id" value="{{post.id}}" class="btn btn-danger btn-sm">Unlike</button> - {{total_likes}} 
+    {% else %}
+        <button type="submit" name="post_id" value="{{post.id}}" class="btn btn-primary btn-sm">Like</button> - {{total_likes}} 
+    {% endif %}
+  
+</form>
+<br/>
+
+</div>
+
+{% endblock %}

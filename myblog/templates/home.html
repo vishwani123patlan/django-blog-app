@@ -1,0 +1,115 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block extra_head %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+
+{% block content %}
+
+
+<h1 class="heading">Recent Posts</h1>
+<div class="container-fluid row">
+
+<div class="col-md-3" style="margin-top:10px;width: 20rem;height:100%;">
+  <div class="row side-row">
+  {% for posts in posts %}
+  <p><a class="card-title" href="{% url 'detail-view' posts.pk%}">{{posts.title}}</a><br/></p>
+ {% endfor %}
+ 
+  </div>
+
+  <div class="row" style="width: 27.5rem;">
+    <img src="{% static 'images/get-loved-by-google.jpg' %}" class="goggle-ad"> <br/>
+  </div>
+
+  <div class="row"  style="width: 27.5rem;">
+    <form class="enquiery-form">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Reach us with Email </label>
+        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <button type="submit"  class="btn btn-primary ">Submit</button>
+    </form>
+  </div>
+  
+</div>
+
+    
+
+  <div class="conatiner col" id="paginater">
+      {% for post  in object_list %}
+    <div class="card mb-3 home-card">
+      <div class="row no-gutters">
+        <div class="col-md-2 mr-5 ml-5 mt-2">
+          {% if post.post_images %}  
+          <img src="{{post.post_images.url}}" class="card-img" alt="..." width="180" height="150">
+          {% else %}
+          <img src="" class="card-img" alt="..." width="180" height="150">
+          {% endif %}
+        </div>
+        <div class="col-md-6 ml-4 mt-2">
+              <a class="card-title" href="{% url 'detail-view' post.pk %}" style="font-size: xx-large">{{post.title}}</a><br/> By <strong style="font-size: larger;">{{post.author.first_name}} {{post.author.last_name}}</strong><br/>
+              {% if user.is_authenticated %}
+              {% if user.id == post.author.id %}
+              <a href="{%url 'update-view' post.pk %}">Edit</a> | 
+              <a href="{%url 'delete-post' post.pk %}" > Delete</a>
+              {% endif %}
+          {% endif %}
+        </div>
+        <div>
+          <div class="card-body">
+            <p class="card-text">{{post.body|slice:':520'|safe}}..................</p>
+            <br/><a href="{% url 'detail-view' post.pk %}" class="btn btn-primary"> View more</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+    <nav aria-label="Page navigation example" class="paginater_list">
+      {% if is_paginated %}
+      <ul class="pagination">
+        {% if object_list.has_previous %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{object_list.previous_page_number}}"
+            >&laquo;</a
+          >
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#">&laquo;</a>
+        </li>
+        {% endif %}
+         {% for i in paginator.page_range %} 
+         {% if object_list.number == i %}
+        <li class="page-item"><a class="page-link active">{{ i }}</a></li>
+        {% else %}
+        <li class="page-item">
+          <a class="page-link" href="?page={{ i }}">{{ i }}</a>
+        </li>
+        {% endif %} 
+        {% endfor %}
+         {% if object_list.has_next %}
+        <li class="page-item">
+          <a href="?page={{object_list.next_page_number}}" class="page-link"
+            >&raquo;</a
+          >
+        </li>
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link">&raquo;</a>
+        </li>
+        {% endif %}
+      </ul>
+      {% endif %}
+    </nav>
+
+
+  </div>  
+
+</div>
+
+
+{% endblock %}
+    
